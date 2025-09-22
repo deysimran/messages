@@ -8,10 +8,16 @@
 		{
 			let n;
 			n = document.getElementById("n").value;
-			if(n.toLowerCase()=="Arshi")
+			if(n.toLowerCase()=="arshi")
             document.getElementById("print").textContent=(n+" I hate you");
+			else if(n.toLowerCase()=="sanchita")
+            document.getElementById("print").textContent=(n+" You're my bestie");
+			else if(n.toLowerCase()=="sreeja")
+            document.getElementById("print").textContent=(n+" Sorry for what I did");
+			else if(n.toLowerCase()=="somprikta")
+            document.getElementById("print").textContent=(n+" You're my enemy");
 			else
-			document.getElementById("print").textContent="Maybe you're good";
+			document.getElementById("print").textContent="Sorry "+n+" I didn't think of you yet... DM me :)";
 		}
 	</script>
 </head>
@@ -19,7 +25,7 @@
 	<center>
 	<br><br><br><br><br>
 	<h1>Reveal the secret message</h1>
-	<h2>Enter your name</h2>
+	<h3>Enter your firs tname</h3>
 	<p><input type = "text" id="n"></p>
 	<br>
 	<button onclick="n()">Check</button>
@@ -27,3 +33,4 @@
 	</center>
 </body>
 </html>
+
