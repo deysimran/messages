@@ -1,40 +1,151 @@
 <html>
 <head>
-	
-    <title>Simran's secret message</title>
+  <title>Simran's Secret Message</title>
+  <style>
+    /* Background gradient animation */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(270deg, #ff6ec4, #7873f5, #4ade80);
+      background-size: 600% 600%;
+      animation: gradientBG 12s ease infinite;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+    }
 
-	<script>
-		function n()
-		{
-			let n;
-			n = document.getElementById("n").value;
-			if(n.toLowerCase()=="arshi")
-            document.getElementById("print").textContent=(n+" I hate you");
-			else if(n.toLowerCase()=="sanchita")
-            document.getElementById("print").textContent=(n+" You're my bestie");
-			else if(n.toLowerCase()=="swarnadip")
-            document.getElementById("print").textContent=(" I love you baby.....mwahhhh");
-			else if(n.toLowerCase()=="sreeja")
-            document.getElementById("print").textContent=(n+" Sorry for what I did");
-			else if(n.toLowerCase()=="somprikta")
-            document.getElementById("print").textContent=(n+" You're my enemy");
-			else
-			document.getElementById("print").textContent="Sorry "+n+" I didn't think of you yet... DM me :)";
-		}
-	</script>
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Container */
+    .container {
+      text-align: center;
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 20px;
+      box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      animation: fadeIn 2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      animation: glow 2s infinite alternate;
+    }
+
+    h3 {
+      font-weight: normal;
+      margin-bottom: 20px;
+      color: #f3f4f6;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff, 0 0 20px #ff6ec4, 0 0 30px #ff6ec4; }
+      to { text-shadow: 0 0 15px #fff, 0 0 25px #7873f5, 0 0 40px #7873f5; }
+    }
+
+    input {
+      padding: 12px;
+      width: 220px;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      font-size: 1rem;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      box-shadow: 0px 0px 15px #fff;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      background: linear-gradient(45deg, #ff6ec4, #7873f5);
+      color: white;
+      box-shadow: 0px 5px 20px rgba(0,0,0,0.3);
+      transition: all 0.4s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0px 10px 30px rgba(0,0,0,0.5);
+    }
+
+    /* Message text animation */
+    #print {
+      margin-top: 25px;
+      font-size: 1.3rem;
+      min-height: 40px;
+      font-weight: bold;
+      opacity: 0;
+      animation: fadeInText 1s forwards;
+    }
+
+    @keyframes fadeInText {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+
+  <script>
+    function n() {
+      let n;
+      n = document.getElementById("n").value;
+      let msg = "";
+
+      if(n.toLowerCase()=="arshi")
+        msg = n+" I hate you";
+      else if(n.toLowerCase()=="sanchita")
+        msg = n+" You're my bestie";
+      else if(n.toLowerCase()=="swarnadip")
+        msg = "I love you baby.....mwahhhh";
+      else if(n.toLowerCase()=="sreeja")
+        msg = n+" Sorry for what I did";
+      else if(n.toLowerCase()=="somprikta")
+        msg = n+" You're my enemy";
+      else
+        msg = "Sorry "+n+" I didn't think of you yet... DM me :)";
+
+      let print = document.getElementById("print");
+      print.textContent = msg;
+      print.style.opacity = "0"; // reset before re-animation
+      print.style.animation = "none";
+      void print.offsetHeight; // trigger reflow
+      print.style.animation = "fadeInText 1s forwards";
+    }
+  </script>
 </head>
 <body>
-	<center>
-	<br><br><br><br><br><br><br>
-	<h2>Reveal the secret message</h2>
-	<h3>Enter your first name</h3>
-	<p><input type = "text" id="n"></p>
-	<br>
-	<button onclick="n()">Check</button>
-	<p id= "print"></p>
-	</center>
+  <div class="container">
+    <h2>✨ Reveal the Secret Message ✨</h2>
+    <h3>Enter your first name</h3>
+    <input type="text" id="n" placeholder="Type here...">
+    <br>
+    <button onclick="n()">Check</button>
+    <p id="print"></p>
+  </div>
 </body>
 </html>
+
 
 
 
