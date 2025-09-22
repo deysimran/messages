@@ -94,8 +94,8 @@
       box-shadow: 0px 6px 20px rgba(166, 193, 238, 0.5);
     }
 
-    /* Instagram Profile Button */
-    #myButton {
+    /* Instagram Buttons */
+    #myButton, #msgButton {
       display: none; /* hidden by default */
       background-color: #d84570;
       color: white;
@@ -106,15 +106,16 @@
       box-shadow: 0 4px 12px rgba(216, 69, 112, 0.3);
       transition: transform 0.4s ease, opacity 0.4s ease;
       opacity: 0;
+      margin: 10px;
     }
 
-    #myButton.show {
+    #myButton.show, #msgButton.show {
       display: inline-block;
       opacity: 1;
       animation: slideIn 0.6s ease forwards;
     }
 
-    #myButton:hover {
+    #myButton:hover, #msgButton:hover {
       background-color: #c13a61;
       transform: translateY(-3px);
     }
@@ -146,32 +147,31 @@
       let n = document.getElementById("n").value.trim();
       let msg = "";
       const button = document.getElementById('myButton');
+      const msgButton = document.getElementById('msgButton');
 
-      // Hide button each time by default
+      // Hide both buttons each time by default
       button.classList.remove("show");
+      msgButton.classList.remove("show");
 
       if(n.toLowerCase()=="arshi") {
         msg = n+" I hate you 😡 ";
-        button.classList.add("show");
       }
       else if(n.toLowerCase()=="sanchita") {
         msg = n+" You're my bestie 🫂 ";
-        button.classList.add("show");
       }
       else if(n.toLowerCase()=="swarnadip") {
         msg = "I love you baby.....mwahhhh 💋 ";
-        button.classList.add("show");
       }
       else if(n.toLowerCase()=="sreeja") {
         msg = n+" Sorry for what I did 😔 ";
-        button.classList.add("show");
       }
       else if(n.toLowerCase()=="logic") {
         msg = " Find your logic 💡 ";
-        button.classList.add("show");
       }
       else {
         msg = "Sorry I haven't think of you yet... DM me 👇";
+        button.classList.add("show");     // Profile button shows only for unknown
+        msgButton.classList.add("show"); // Message Me button shows only for unknown
       }
 
       let print = document.getElementById("print");
@@ -194,9 +194,13 @@
     <button id="myButton" onclick="window.open('https://www.instagram.com/absolut._.vodka._?igsh=NHFvYTJwNzcxdjI2')">
       My Profile
     </button>
+    <button id="msgButton" onclick="window.open('https://www.instagram.com/direct/t/17849522089041142')">
+      Message Me
+    </button>
   </div>
 </body>
 </html>
+
 
 
 
