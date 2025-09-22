@@ -2,7 +2,7 @@
 <head>
   <title>Simran's Secret Message</title>
   <style>
-    /* Background gradient animation */
+    /* Smooth pastel gradient background */
     body {
       margin: 0;
       padding: 0;
@@ -10,11 +10,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(270deg, #ff6ec4, #7873f5, #4ade80);
-      background-size: 600% 600%;
-      animation: gradientBG 12s ease infinite;
+      background: linear-gradient(-45deg, #fbc2eb, #a6c1ee, #fcd5ce, #c1f0f6);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
       font-family: 'Poppins', sans-serif;
-      color: #fff;
+      color: #333;
     }
 
     @keyframes gradientBG {
@@ -23,14 +23,14 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Container */
+    /* Glassy container */
     .container {
       text-align: center;
-      padding: 40px;
-      background: rgba(0, 0, 0, 0.5);
+      padding: 40px 50px;
+      background: rgba(255, 255, 255, 0.6);
       border-radius: 20px;
-      box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px);
+      box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(12px);
       animation: fadeIn 2s ease;
     }
 
@@ -40,111 +40,164 @@
     }
 
     h2 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      animation: glow 2s infinite alternate;
+      font-size: 2rem;
+      margin-bottom: 8px;
+      color: #444;
+      letter-spacing: 1px;
     }
 
     h3 {
-      font-weight: normal;
+      font-weight: 400;
+      font-size: 1rem;
       margin-bottom: 20px;
-      color: #f3f4f6;
-    }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #fff, 0 0 20px #ff6ec4, 0 0 30px #ff6ec4; }
-      to { text-shadow: 0 0 15px #fff, 0 0 25px #7873f5, 0 0 40px #7873f5; }
+      color: #555;
     }
 
     input {
       padding: 12px;
       width: 220px;
-      border: none;
+      border: 1px solid #ccc;
       border-radius: 8px;
       outline: none;
       font-size: 1rem;
       text-align: center;
+      background: rgba(255,255,255,0.8);
       transition: 0.3s;
     }
 
     input:focus {
-      box-shadow: 0px 0px 15px #fff;
+      border-color: #a6c1ee;
+      box-shadow: 0px 0px 12px rgba(166, 193, 238, 0.6);
     }
 
+    /* General button style */
     button {
       margin-top: 20px;
       padding: 12px 30px;
       border: none;
-      border-radius: 30px;
+      border-radius: 25px;
       font-size: 1rem;
-      font-weight: bold;
+      font-weight: 500;
       cursor: pointer;
-      background: linear-gradient(45deg, #ff6ec4, #7873f5);
+      transition: all 0.3s ease;
+    }
+
+    /* Check button */
+    .check-btn {
+      background: linear-gradient(90deg, #fbc2eb, #a6c1ee);
+      color: #fff;
+      box-shadow: 0px 4px 15px rgba(166, 193, 238, 0.4);
+    }
+
+    .check-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0px 6px 20px rgba(166, 193, 238, 0.5);
+    }
+
+    /* Instagram Profile Button */
+    #myButton {
+      display: none; /* hidden by default */
+      background-color: #d84570;
       color: white;
-      box-shadow: 0px 5px 20px rgba(0,0,0,0.3);
-      transition: all 0.4s ease;
+      font-size: 15px;
+      font-weight: bold;
+      padding: 12px 26px;
+      border-radius: 25px;
+      box-shadow: 0 4px 12px rgba(216, 69, 112, 0.3);
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      opacity: 0;
     }
 
-    button:hover {
-      transform: scale(1.1);
-      box-shadow: 0px 10px 30px rgba(0,0,0,0.5);
+    #myButton.show {
+      display: inline-block;
+      opacity: 1;
+      animation: slideIn 0.6s ease forwards;
     }
 
-    /* Message text animation */
+    #myButton:hover {
+      background-color: #c13a61;
+      transform: translateY(-3px);
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Secret message */
     #print {
       margin-top: 25px;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       min-height: 40px;
-      font-weight: bold;
+      font-weight: 500;
+      color: #333;
       opacity: 0;
       animation: fadeInText 1s forwards;
     }
 
     @keyframes fadeInText {
-      from { opacity: 0; transform: scale(0.9); }
+      from { opacity: 0; transform: scale(0.95); }
       to { opacity: 1; transform: scale(1); }
     }
   </style>
 
   <script>
     function n() {
-      let n;
-      n = document.getElementById("n").value;
+      let n = document.getElementById("n").value.trim();
       let msg = "";
+      const button = document.getElementById('myButton');
 
-      if(n.toLowerCase()=="arshi")
+      // Hide button each time by default
+      button.classList.remove("show");
+
+      if(n.toLowerCase()=="arshi") {
         msg = n+" I hate you";
-      else if(n.toLowerCase()=="sanchita")
+        button.classList.add("show");
+      }
+      else if(n.toLowerCase()=="sanchita") {
         msg = n+" You're my bestie";
-      else if(n.toLowerCase()=="swarnadip")
+        button.classList.add("show");
+      }
+      else if(n.toLowerCase()=="swarnadip") {
         msg = "I love you baby.....mwahhhh";
-      else if(n.toLowerCase()=="sreeja")
+        button.classList.add("show");
+      }
+      else if(n.toLowerCase()=="sreeja") {
         msg = n+" Sorry for what I did";
-      else if(n.toLowerCase()=="logic")
-        msg = "For more details on this topic do contact +91 86170 42450 ";
-      else
-        msg = "Sorry "+n+" I didn't think of you yet... DM me :)";
+        button.classList.add("show");
+      }
+      else if(n.toLowerCase()=="somprikta") {
+        msg = n+" You're my enemy";
+        button.classList.add("show");
+      }
+      else {
+        msg = "Oops! You're blocked 🚫";
+      }
 
       let print = document.getElementById("print");
       print.textContent = msg;
-      print.style.opacity = "0"; // reset before re-animation
+      print.style.opacity = "0";
       print.style.animation = "none";
-      void print.offsetHeight; // trigger reflow
+      void print.offsetHeight; // reflow
       print.style.animation = "fadeInText 1s forwards";
     }
   </script>
 </head>
 <body>
   <div class="container">
-    <h2>✨ Reveal the Secret Message ✨</h2>
+    <h2>Reveal the Secret Message</h2>
     <h3>Enter your first name</h3>
     <input type="text" id="n" placeholder="Type here...">
     <br>
-    <button onclick="n()">Check</button>
+    <button class="check-btn" onclick="n()">Check</button>
     <p id="print"></p>
+    <button id="myButton" onclick="window.open('https://www.instagram.com/absolut._.vodka._?igsh=NHFvYTJwNzcxdjI2')">
+      My Profile
+    </button>
   </div>
 </body>
 </html>
+
 
 
 
